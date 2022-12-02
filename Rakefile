@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'dotenv'
-require 'curb'
 require 'date'
 require 'fileutils'
 require 'mechanize'
@@ -73,30 +72,10 @@ def code_dir(day)
   FileUtils.touch "#{dirname}/test_input.txt"
 end
 
-def markdown_file(day)
-  filename = format('%02d', day)
-
-  return if File.exist?("content/#{filename}.md")
-
-  title = get_title(day)
-  File.open("content/#{filename}.md", 'w') do |f|
-    f.puts '---'
-    f.puts "title: Day #{day} - #{title}"
-    f.puts 'kind: article'
-    f.puts "created_at: 2021-12-#{filename}"
-    f.puts "source_dir: #{filename}/"
-    f.puts "link: https://adventofcode.com/2021/day/#{day}"
-    f.puts '---'
-    f.puts
-    f.puts 'Todays problem is .... not solved yet'
-  end
-end
-
 task :default do
   puts 'usage: '
   puts '  rake next      # sets up everything for today'
   puts '  rake day[3]    # sets up everything for day 3'
-  puts '  rake md[3]     # created markdown file for day 3'
   puts '  rake input[3]  # gets input data for day 3'
   puts '  rake guard[3]  # sets up Guardfile to run day 3'
 end
@@ -110,7 +89,6 @@ task :next do
   end
   code_dir(day)
   save_input(day)
-  markdown_file(day)
   set_guard(day)
 end
 
@@ -118,14 +96,7 @@ task :day, [:date] do |_t, args|
   day = args.date.to_i
   puts "Should work on day #{day}"
   code_dir(day)
-  markdown_file(day)
   set_guard(day)
-end
-
-task :md, [:date] do |_t, args|
-  day = args.date.to_i
-  puts "Should create md file for day #{day}"
-  markdown_file(day)
 end
 
 task :input, [:date] do |_t, args|

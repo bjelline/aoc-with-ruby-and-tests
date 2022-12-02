@@ -5,6 +5,21 @@ Test Driven coding for advent of code
 Code is in `01/solution_spec.rb` to `25/solution_spec.rb`
 
 
+## Setup (once)
+
+Edit Rakefile line 8: set the correct year
+
+Log into your account on https://adventofcode.com/
+and read out the session-cookie  (using the developer tools
+in your webbrowser. e.g. tab web-storage in Firefox developer tools)
+
+create a file `.env` in the main folder:
+
+    AOC_SESSION_KEY=12345verylongstring12345
+
+## Setup (daily)
+
+
 To set up for today, run two commands in the terminal:
 
     rake next          # sets up everything for today
@@ -35,6 +50,11 @@ now the terminal is busy, the rest happens in the editor:
 * implement `part2` in `solution_spec.rb`
 * now the test "part2 gives correct solution with test data" should go green
 * copy out the result for part2
+
+## Finish for the day
+
+* type EXIT and press ENTER to stop guard in the terminal
+* don't forget to commit todays solution!
 
 
 ## more setup options

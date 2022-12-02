@@ -2,17 +2,12 @@
 
 source 'https://rubygems.org'
 
-gem 'curb'
 gem 'dotenv'
-gem 'geo3d'
 gem 'guard-rspec', require: false
-gem 'iodine'
 gem 'mechanize'
-gem 'pg'
 gem 'pry'
 gem 'rack'
 gem 'rake'
-gem 'rgl'
 gem 'rspec'
 
 group :development do
@@ -20,4 +15,7 @@ group :development do
   gem 'rubocop-rspec'
   gem 'solargraph'
 end
+
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+gem 'win32console'
 
