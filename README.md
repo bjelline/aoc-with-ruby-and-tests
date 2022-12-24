@@ -19,7 +19,6 @@ create a file `.env` in the main folder:
 
 ## Setup (daily)
 
-
 To set up for today, run two commands in the terminal:
 
     rake next          # sets up everything for today
